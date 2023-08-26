@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: Gainsboro;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: DimGray;
+    color: White;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .button {
+    background-color: DodgerBlue;
+    color: White;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: SteelBlue;
+    transform: scale(1.1);
+  }
+  
+  .slider {
+    width: 200px;
+    appearance: none;
+    background: LightGray;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    transition: width 0.3s ease;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: DodgerBlue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: DodgerBlue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    background-color: LightGray;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: White;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+  }
+  
+  .toggle.active {
+    background-color: DodgerBlue;
+  }
+  
+  .toggle.active::before {
+    transform: translateX(20px);
+  }
+  
+  .section {
+    text-align: center;
+    padding: 3rem;
+  }
+  
+  .section::before {
+    content: 'Decorative';
+    display: block;
+    font-size: 24px;
+    color: DodgerBlue;
+    margin-bottom: 1rem;
+  }
+  
+  .section::after {
+    content: 'Functional';
+    display: block;
+    font-size: 24px;
+    color: DodgerBlue;
+    margin-top: 1rem;
+  }
+  
+  .cube-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 4s infinite linear;
+  }
+  
+  .cube div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: Grey;
+    opacity: 0.7;
+  }
+  
+  .front { transform: translateZ(50px); }
+  .back { transform: rotateY(180deg) translateZ(50px); }
+  .right { transform: rotateY(90deg) translateZ(50px); }
+  .left { transform: rotateY(-90deg) translateZ(50px); }
+  .top { transform: rotateX(90deg) translateZ(50px); }
+  .bottom { transform: rotateX(-90deg) translateZ(50px); }
+  
+  @keyframes rotate {
+    0%, 100% { transform: rotateY(0); }
+    50% { transform: rotateY(180deg); }
+  }
+  
+  .custom-cursor {
+    width: 30px;
+    height: 30px;
+    background-color: DodgerBlue;
+    border-radius: 50%;
+    position: absolute;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+  }
+  
+  .custom-cursor.active {
+    transform: scale(1);
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>CSS Competence Unpaid Trial Task #2</h1>
+  </header>
+  
+  <div class="container">
+    <button class="button">Button</button>
+    <input type="range" class="slider">
+    <div class="toggle"></div>
+  </div>
+  
+  <div class="section">
+    <div class="cube-container">
+      <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="custom-cursor"></div>
+    <p>Hover over this text to see the custom cursor!</p>
+  </div>
+  
+  <script>
+    const customCursor = document.querySelector('.custom-cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      customCursor.style.left = e.clientX + 'px';
+      customCursor.style.top = e.clientY + 'px';
+    });
+    
+    document.addEventListener('mouseover', (e) => {
+      customCursor.classList.add('active');
+    });
+    
+    document.addEventListener('mouseout', (e) => {
+      customCursor.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

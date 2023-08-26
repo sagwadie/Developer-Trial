@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* Reset some default styles */
+  body, h1, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Basic styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: White;
+    color: White;
+  }
+  
+  /* Header */
+  header {
+    background-color: Black;
+    color: White;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Main content */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: Black;
+    color: White;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* Keyframe animation */
+  @keyframes button-hover {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Button */
+  .btn {
+    background-color: Black;
+    color: White;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    animation: button-hover 0.3s forwards;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>CSS Competence Unpaid Trial Task #1</h1>
+  </header>
+  
+  <div class="main-container">
+    <button class="btn">Hover Me!!!</button>
+  </div>
+  
+  <footer>
+    <p>&copy; 2023 CSS Trail Task 1</p>
+  </footer>
+</body>
+</html>
